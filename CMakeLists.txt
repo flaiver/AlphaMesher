@@ -18,12 +18,9 @@ set(MAYA_LIBS
     OpenMaya.so
     )
 
-set(FULLPATH_MAYA_LIBS)
-foreach(l ${MAYA_LIBS})
-    list(APPEND ${l})
-endforeach()
 
-MESSAGE(STATUS ${FULLPATH_MAYA_LIBS})
+LINK_DIRECTORIES(${MAYA_LIB_PATH})
 INCLUDE_DIRECTORIES(${MAYA_INC_PATH})
-add_library(AlphaMesherProj SHARED ${SOURCES} ${MAYA_LIB_PATH})
+add_library(AlphaMesherProj SHARED ${SOURCES} )
+target_link_libraries(AlphaMesherProj ${MAYA_LIBS})
 
